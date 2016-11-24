@@ -21,7 +21,8 @@
 ## API
 
 ### 登录
-kidee_admin/login
+~~kidee_admin/login~~
+done
 
 ### 新增用户
 kidee_admin/add_user

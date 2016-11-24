@@ -73,6 +73,15 @@ body :-ms-input-placeholder {
   transition-timing-function: ease-in-put;
   font-weight: 200;
 }
+.container p {
+  text-align: center;
+}
+.container .success {
+  color: #fff;
+}
+.container .error {
+  color: #ff4000;
+}
 form {
   padding: 20px 0;
   position: relative;
