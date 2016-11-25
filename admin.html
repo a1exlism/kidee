@@ -1,10 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="refresh" content="0;url=pages/index.html">
-<title>Manager | Kidee</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Manager | Kidee</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
+<div id="wrapper">
+	<!-- Navibar - top -->
+	<nav class="navbar navbar-default" role="navigation">
+		<!-- Brand-left -->
+		<div class="navbar-header">
+			<span class="navbar-brand">Kidee Manager</span>
+		</div>
+		<!-- right -->
+		<div class="collapse navbar-collapse" id="">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Link</a></li>
+			</ul>
+		</div>
+	</nav>
 	
+	<!-- Main -->
+	<div class="container">
+		
+		<div class="row">
+			<!-- sidebar -->
+			<div class="col-sm-3 col-md-2 sidebar">
+				<!-- nav tabs -->
+				<ul class="nav nav-tabs nav-pills nav-stacked">
+					<li role="presentation" class="active">
+						<a href="#index" data-toggle="tab" class="list-group-item" aria-controls="index">User Search</a>
+					</li>
+					<li role="presentation">
+						<a href="#user-add" data-toggle="tab" class="list-group-item" aria-controls="user-add">User Add</a>
+					</li>
+					<li role="presentation">
+						<a href="#pass-cha" data-toggle="tab" class="list-group-item">Password Change</a>
+					</li>
+					<li role="presentation">
+						<a href="#watch-dis" data-toggle="tab" class="list-group-item">Watch Disable</a>
+					</li>
+					<li role="presentation">
+						<a href="#user-dis" data-toggle="tab" class="list-group-item">User Disable</a>
+					</li>
+				</ul>
+			</div>
+			<!-- main body -->
+			<div class="col-sm-6 col-md-8">
+				<div class="container">
+					<div class="row" id="tabs">
+						<!-- Content tabs -->
+						<div class="col-sm-offset-2 col-sm-6">
+							<div id="search">
+								<h2>Watch search</h2>
+								<div class="form-group">
+									<label>Option: </label>
+									<select class="form-control">
+										<option selected="selected">Username</option>
+										<option value="">Watch IMEI</option>
+										<option value="">Phone number</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<input class="form-control" placeholder="默认为Username, 其他用js更改">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div id="user-add">
+								<h2>Add User</h2>
+								<form>
+									<div class="form-group">
+										<label for="user-add-user">Username: </label>
+										<input type="text" class="form-control" id="user-add-user">
+									</div>
+									<div class="form-group">
+										<label for="user-add-pass">Password: </label>
+										<input type="password" class="form-control" id="user-add-pass">
+									</div>
+									<button type="button" class="btn btn-default center-block">Submit</button>
+								</form>
+							</div>
+
+							<div id="pass-cha">
+								<h2>Change user password</h2>
+								<form>
+									<div class="form-group">
+										<label for="pass-cha-user">Username: </label>
+										<input type="text" class="form-control" id="pass-cha-user">
+									</div>
+									<div class="form-group">
+										<label for="pass-cha-ori">Origin password: </label>
+										<input type="password" class="form-control" id="pass-cha-ori">
+									</div>
+									<div class="form-group">
+										<label for="pass-cha-new">New password: </label>
+										<input type="password" class="form-control" id="pass-cha-new">
+									</div>
+									<button type="button" class="btn btn-default center-block">Change</button>
+								</form>
+							</div>
+
+							<div id="user-dis">
+								<h2>Disable User</h2>
+								<form>
+									<div class="form-group">
+										<label for="user-dis-pid">Parent ID: </label>
+										<input type="text" class="form-control" id="user-dis-pid">
+									</div>
+									<button type="button" class="btn btn-default center-block">Ban</button>
+								</form>
+							</div>
+
+							<div id="watch-dis">
+								<h2>Disabel watch</h2>
+								<form>
+									<div class="form-group">
+										<label for="watch-dis-wid">Watch ID: </label>
+										<input type="text" class="form-control" id="watch-dis-wid">
+									</div>
+									<button type="button" class="btn btn-default center-block">Ban</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/3rd/jquery-3.1.1.min.js"></script>
+	<script src="js/admin.js"></script>
 </body>
 </html>

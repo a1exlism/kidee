@@ -76,11 +76,11 @@ body :-ms-input-placeholder {
 .container p {
   text-align: center;
 }
-.container .success {
-  color: #fff;
+.container .info .success {
+  color: #eee;
 }
-.container .error {
-  color: #ff4000;
+.container .info .error {
+  color: #CE4F45;
 }
 form {
   padding: 20px 0;
