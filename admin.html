@@ -16,13 +16,14 @@
 			<span class="navbar-brand">Kidee Manager</span>
 		</div>
 		<!-- right -->
-		<div class="collapse navbar-collapse" id="">
+		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Link</a></li>
+				<li>Watches Number: <span>111</span></li>
+				<li>User Number: <span>111</span></li>
 			</ul>
 		</div>
 	</nav>
-	
+
 	<!-- Main -->
 	<div class="container">
 		
@@ -49,96 +50,134 @@
 				</ul>
 			</div>
 			<!-- main body -->
-			<div class="col-sm-6 col-md-8">
-				<div class="container">
-					<div class="row">
-						<!-- Content tabs -->
-						<div class="col-sm-offset-2 col-sm-6" id="tabs">
-							<div id="search">
-								<h2>Watch search</h2>
-								<div class="form-group">
-									<label>Option: </label>
-									<select class="form-control">
-										<option data-opt="username" selected="selected">Username</option>
-										<option data-opt="imei">Watch IMEI</option>
-										<option data-opt="phone_number">Phone number</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<div class="input-group">
-										<input class="form-control" placeholder="">
+			<div class="container">
+				<div class="row">
+					<!-- Controller tabs -->
+					<div class="col-sm-offset-2 col-sm-6" id="tabs">
+						<div id="search">
+							<h2>Watch search</h2>
+							<div class="form-group">
+								<label>Option: </label>
+								<select class="form-control">
+									<option data-opt="username" selected="selected">Username</option>
+									<option data-opt="imei">Watch IMEI</option>
+									<option data-opt="phone_number">Phone number</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control" placeholder="">
 										<span class="input-group-btn">
-											<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+											<button class="btn btn-default" id="btn-search" type="button"><i class="glyphicon glyphicon-search"></i></button>
 										</span>
-									</div>
 								</div>
-							</div>
-
-							<div id="user-add">
-								<h2>Add User</h2>
-								<form>
-									<div class="form-group">
-										<label >Username: </label>
-										<input type="text" class="form-control" data-post="username">
-									</div>
-									<div class="form-group">
-										<label>Password: </label>
-										<input type="password" class="form-control" data-post="pwd">
-									</div>
-									<button type="button" class="btn btn-default center-block">Submit</button>
-								</form>
-							</div>
-
-							<div id="pass-cha">
-								<h2>Change user password</h2>
-								<form>
-									<div class="form-group">
-										<label >Username: </label>
-										<input type="text" class="form-control" data-post="username">
-									</div>
-									<div class="form-group">
-										<label >Origin password: </label>
-										<input type="password" class="form-control" data-post="old_pwd">
-									</div>
-									<div class="form-group">
-										<label>New password: </label>
-										<input type="password" class="form-control" data-post="new_pwd">
-									</div>
-									<button type="button" class="btn btn-default center-block">Change</button>
-								</form>
-							</div>
-
-							<!-- todo: HTML5 data-* change -->
-
-							<div id="user-dis">
-								<h2>Disable User</h2>
-								<form>
-									<div class="form-group">
-										<label >Parent ID: </label>
-										<input type="text" class="form-control" data-post="pid">
-									</div>
-									<button type="button" class="btn btn-default center-block">Disable</button>
-								</form>
-							</div>
-
-							<div id="watch-dis">
-								<h2>Disable watch</h2>
-								<form>
-									<div class="form-group">
-										<label>Watch ID: </label>
-										<input type="text" class="form-control" data-post="kid">
-									</div>
-									<button type="button" class="btn btn-default center-block">Disable</button>
-								</form>
 							</div>
 						</div>
+
+						<div id="user-add">
+							<h2>Add User</h2>
+							<form>
+								<div class="form-group">
+									<label>Username: </label>
+									<input type="text" class="form-control" data-post="username">
+								</div>
+								<div class="form-group">
+									<label>Password: </label>
+									<input type="password" class="form-control" data-post="pwd">
+								</div>
+								<button type="button" id="btn-useradd" class="btn btn-default center-block">Submit</button>
+							</form>
+						</div>
+
+						<div id="pass-cha">
+							<h2>Change user password</h2>
+							<form>
+								<div class="form-group">
+									<label>Username: </label>
+									<input type="text" class="form-control" data-post="username">
+								</div>
+								<div class="form-group">
+									<label>Origin password: </label>
+									<input type="password" class="form-control" data-post="old_pwd">
+								</div>
+								<div class="form-group">
+									<label>New password: </label>
+									<input type="password" class="form-control" data-post="new_pwd">
+								</div>
+								<button type="button" id="btn-passcha" class="btn btn-default center-block">Change</button>
+							</form>
+						</div>
+
+						<div id="user-dis">
+							<h2>Disable User</h2>
+							<form>
+								<div class="form-group">
+									<label>Parent ID: </label>
+									<input type="text" class="form-control" data-post="pid">
+								</div>
+								<button type="button" id="btn-userdis" class="btn btn-default center-block">Disable</button>
+							</form>
+						</div>
+
+						<div id="watch-dis">
+							<h2>Disable watch</h2>
+							<form>
+								<div class="form-group">
+									<label>Watch ID: </label>
+									<input type="text" class="form-control" data-post="kid">
+								</div>
+								<button type="button" id="btn-watchdis" class="btn btn-default center-block">Disable</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="search-result">
+					<div class="col-md-offset-1 col-md-9">
+						<h3>Search Results</h3>
+						<table class="table table-hover">
+							<thead>
+							<tr>
+								<th>Parent username</th>
+								<th>Parent No</th>
+								<th>Pid</th>
+								<th>Kid</th>
+								<th>Kid No</th>
+								<th>IMEI</th>
+								<th>Nickname</th>
+								<th>QRCode</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>hex@qq.com</td>
+								<td>18811112222</td>
+								<td>1234567</td>
+								<td>12312312</td>
+								<td>18868877577</td>
+								<td>123456789123456</td>
+								<td>a1exlism</td>
+								<td>32431424</td>
+							</tr>
+							<tr>
+								<td>hex@qq.com</td>
+								<td>18811112222</td>
+								<td>1234567</td>
+								<td>456456456</td>
+								<td>18868877677</td>
+								<td>123456787123456</td>
+								<td>hexigon</td>
+								<td>32451421</td>
+							</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<script src="js/3rd/jquery-3.1.1.min.js"></script>
-	<script src="js/admin.js"></script>
+</div>
+
+<script src="js/3rd/jquery-3.1.1.min.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>

@@ -1,23 +1,30 @@
 $(function () {
 	var tabs = $('#tabs');
+	//  sidebar
 	var tabSearch = $('#search'),
 		tabUserAdd = $('#user-add'),
 		tabPassCha = $('#pass-cha'),
 		tabUserDis = $('#user-dis'),
 		tabWatchDis = $('#watch-dis');
+	var lis = $('.sidebar li');
+	var searchResult = $('#search-result'),
+		searchBody = $(searchResult).find('table>tbody');
+	//  buttons
+	var btnSearch = $('#btn-search'),
+		btnUserAdd = $('#btn-useradd'),
+		btnPassCha = $('#btn-passcha'),
+		btnUserDis = $('#btn-userdis'),
+		btnWatchDis = $('#btn-watchdis');
 
 	//  public
 	(function activeToggle() {
 		var li = $('.sidebar .nav li');
 		$.each(li, function (index, element) {
-			//console.log('index: ' + index);
-			//console.log('value: ' + $(element).find('a').attr('class'));
 			$(element).click(function () {
 				rmActive(li);
 				$(this).attr('class', 'active');
 				tabShow($(element).find('a').attr('href'));
 			});
-
 		});
 	})();
 
@@ -62,8 +69,6 @@ $(function () {
 		});
 	}
 
-	//setTimeout(getStatistics, 100);
-
 	function search() {
 		var url = 'http://test.com/kidee_admin/search_user.php';
 
@@ -72,16 +77,37 @@ $(function () {
 		var postData = {};
 		postData[opt] = optVal;
 
+		//function detailRender(obj) {
+		//
+		//}
+
 		dataPost(url, postData, function (data) {
 			if (data) {
-				console.log(data);
+				$(searchBody).empty();
+				var rowNum = data.kids.length;
+				var i = 0;
+				//var dataRow;
+				while (i < rowNum) {
+					console.log(data.p_username);
+					var dataRow = $('<tr>' +
+						'<td>' + data.p_username + '</td>' +
+						'<td>' + data.p_number + '</td>' +
+						'<td>' + data.pid + '</td>' +
+						'<td>' + data.kids[i].kid + '</td>' +
+						'<td>' + data.kids[i].k_number + '</td>' +
+						'<td>' + data.kids[i].imei + '</td>' +
+						'<td>' + data.kids[i].k_nickname + '</td>' +
+						'<td>' + data.kids[i].qrcode + '</td>' +
+						'</tr>');
+					$(searchBody).append($(dataRow));
+					i++;
+				}
 			}
+
+			$(searchResult).show();
+
 		});
-
-		//console.log(postData);
 	}
-
-	//setTimeout(search, 3000);
 
 	function userAdd() {
 		var url = 'http://test.com/kidee_admin/add_user.php';
@@ -98,8 +124,6 @@ $(function () {
 
 	}
 
-	//setTimeout(userAdd, 4000);
-
 	function passCha() {
 		var url = 'http://test.com/kidee_admin/change_pwd.php';
 		var postData = {};
@@ -114,8 +138,6 @@ $(function () {
 		});
 
 	}
-
-	//setTimeout(passCha, 5000);
 
 	function userDis() {
 		var url = 'http://test.com/kidee_admin/disable_user.php';
@@ -132,8 +154,6 @@ $(function () {
 
 	}
 
-	//setTimeout(userDis, 2000);
-
 	function watchDis() {
 		var url = 'http://test.com/kidee_admin/disable_watch.php';
 		var postData = {};
@@ -149,5 +169,48 @@ $(function () {
 
 	}
 
-	//setTimeout(watchDis, 2000);
+	//  todo: Page render function
+
+	//  sidebar click binder
+
+	(function renderStatistics() {
+		//  todo: 统计数据
+	})();
+
+	function postBind(funcName, func) {
+		lis.find('a[href="#' + funcName + '"]').bind('click', func);
+	}
+
+	postBind('search', function (event) {
+
+		event.preventDefault();
+	});
+	postBind('user-add', function (event) {
+
+		$(searchResult).hide();
+		event.preventDefault();
+	});
+	postBind('pass-cha', function (event) {
+
+		$(searchResult).hide();
+		event.preventDefault();
+	});
+	postBind('user-dis', function (event) {
+
+		$(searchResult).hide();
+		event.preventDefault();
+	});
+	postBind('watch-dis', function (event) {
+
+		$(searchResult).hide();
+		event.preventDefault();
+	});
+
+	//  todo: tabs click binder  --version: 1
+	//  btn group
+	$(btnSearch).bind('click', function () {
+		search();
+	});
+
+
 });
