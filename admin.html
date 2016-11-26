@@ -32,7 +32,7 @@
 				<!-- nav tabs -->
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation" class="active">
-						<a href="#index" class="list-group-item" aria-controls="index">User Search</a>
+						<a href="#search" class="list-group-item" aria-controls="index">Watch Search</a>
 					</li>
 					<li role="presentation">
 						<a href="#user-add" class="list-group-item" aria-controls="user-add">User Add</a>
@@ -51,22 +51,22 @@
 			<!-- main body -->
 			<div class="col-sm-6 col-md-8">
 				<div class="container">
-					<div class="row" id="tabs">
+					<div class="row">
 						<!-- Content tabs -->
-						<div class="col-sm-offset-2 col-sm-6">
+						<div class="col-sm-offset-2 col-sm-6" id="tabs">
 							<div id="search">
 								<h2>Watch search</h2>
 								<div class="form-group">
 									<label>Option: </label>
 									<select class="form-control">
-										<option selected="selected">Username</option>
-										<option value="">Watch IMEI</option>
-										<option value="">Phone number</option>
+										<option data-opt="username" selected="selected">Username</option>
+										<option data-opt="imei">Watch IMEI</option>
+										<option data-opt="phone_number">Phone number</option>
 									</select>
 								</div>
 								<div class="form-group">
 									<div class="input-group">
-										<input class="form-control" placeholder="默认为Username, 其他用js更改">
+										<input class="form-control" placeholder="">
 										<span class="input-group-btn">
 											<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
 										</span>
@@ -78,12 +78,12 @@
 								<h2>Add User</h2>
 								<form>
 									<div class="form-group">
-										<label for="user-add-user">Username: </label>
-										<input type="text" class="form-control" id="user-add-user">
+										<label >Username: </label>
+										<input type="text" class="form-control" data-post="username">
 									</div>
 									<div class="form-group">
-										<label for="user-add-pass">Password: </label>
-										<input type="password" class="form-control" id="user-add-pass">
+										<label>Password: </label>
+										<input type="password" class="form-control" data-post="pwd">
 									</div>
 									<button type="button" class="btn btn-default center-block">Submit</button>
 								</form>
@@ -93,40 +93,42 @@
 								<h2>Change user password</h2>
 								<form>
 									<div class="form-group">
-										<label for="pass-cha-user">Username: </label>
-										<input type="text" class="form-control" id="pass-cha-user">
+										<label >Username: </label>
+										<input type="text" class="form-control" data-post="username">
 									</div>
 									<div class="form-group">
-										<label for="pass-cha-ori">Origin password: </label>
-										<input type="password" class="form-control" id="pass-cha-ori">
+										<label >Origin password: </label>
+										<input type="password" class="form-control" data-post="old_pwd">
 									</div>
 									<div class="form-group">
-										<label for="pass-cha-new">New password: </label>
-										<input type="password" class="form-control" id="pass-cha-new">
+										<label>New password: </label>
+										<input type="password" class="form-control" data-post="new_pwd">
 									</div>
 									<button type="button" class="btn btn-default center-block">Change</button>
 								</form>
 							</div>
 
+							<!-- todo: HTML5 data-* change -->
+
 							<div id="user-dis">
 								<h2>Disable User</h2>
 								<form>
 									<div class="form-group">
-										<label for="user-dis-pid">Parent ID: </label>
-										<input type="text" class="form-control" id="user-dis-pid">
+										<label >Parent ID: </label>
+										<input type="text" class="form-control" data-post="pid">
 									</div>
-									<button type="button" class="btn btn-default center-block">Ban</button>
+									<button type="button" class="btn btn-default center-block">Disable</button>
 								</form>
 							</div>
 
 							<div id="watch-dis">
-								<h2>Disabel watch</h2>
+								<h2>Disable watch</h2>
 								<form>
 									<div class="form-group">
-										<label for="watch-dis-wid">Watch ID: </label>
-										<input type="text" class="form-control" id="watch-dis-wid">
+										<label>Watch ID: </label>
+										<input type="text" class="form-control" data-post="kid">
 									</div>
-									<button type="button" class="btn btn-default center-block">Ban</button>
+									<button type="button" class="btn btn-default center-block">Disable</button>
 								</form>
 							</div>
 						</div>
