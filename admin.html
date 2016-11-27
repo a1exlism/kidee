@@ -16,16 +16,16 @@
 			<span class="navbar-brand">Kidee Manager</span>
 		</div>
 		<!-- right -->
-		<div class="collapse navbar-collapse">
+		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li>Watches Number: <span>111</span></li>
-				<li>User Number: <span>111</span></li>
+				<li data-num="watch"><a href="javascript:0;">Watches Number: <span>NULL</span></a></li>
+				<li data-num="user"><a href="javascript:0;">User Number: <span>NULL</span></a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<!-- Main -->
-	<div class="container">
+	<div class="container-fluid">
 		
 		<div class="row">
 			<!-- sidebar -->
@@ -68,7 +68,8 @@
 								<div class="input-group">
 									<input class="form-control" placeholder="">
 										<span class="input-group-btn">
-											<button class="btn btn-default" id="btn-search" type="button"><i class="glyphicon glyphicon-search"></i></button>
+											<button class="btn btn-primary" id="btn-search" type="button"><i
+													class="glyphicon glyphicon-search"></i></button>
 										</span>
 								</div>
 							</div>
@@ -85,8 +86,9 @@
 									<label>Password: </label>
 									<input type="password" class="form-control" data-post="pwd">
 								</div>
-								<button type="button" id="btn-useradd" class="btn btn-default center-block">Submit</button>
+								<button type="button" id="btn-useradd" class="btn btn-success center-block">Submit</button>
 							</form>
+
 						</div>
 
 						<div id="pass-cha">
@@ -104,7 +106,7 @@
 									<label>New password: </label>
 									<input type="password" class="form-control" data-post="new_pwd">
 								</div>
-								<button type="button" id="btn-passcha" class="btn btn-default center-block">Change</button>
+								<button type="button" id="btn-passcha" class="btn btn-warning center-block">Change</button>
 							</form>
 						</div>
 
@@ -115,7 +117,7 @@
 									<label>Parent ID: </label>
 									<input type="text" class="form-control" data-post="pid">
 								</div>
-								<button type="button" id="btn-userdis" class="btn btn-default center-block">Disable</button>
+								<button type="button" id="btn-userdis" class="btn btn-danger center-block">Disable</button>
 							</form>
 						</div>
 
@@ -126,13 +128,17 @@
 									<label>Watch ID: </label>
 									<input type="text" class="form-control" data-post="kid">
 								</div>
-								<button type="button" id="btn-watchdis" class="btn btn-default center-block">Disable</button>
+								<button type="button" id="btn-watchdis" class="btn btn-danger center-block">Disable</button>
 							</form>
+						</div>
+						<div class="notify">
+							<p class="success">success</p>
+							<p class="error">error</p>
 						</div>
 					</div>
 				</div>
 				<div class="row" id="search-result">
-					<div class="col-md-offset-1 col-md-9">
+					<div class="col-md-offset-1 col-md-10">
 						<h3>Search Results</h3>
 						<table class="table table-hover">
 							<thead>
@@ -143,6 +149,7 @@
 								<th>Kid</th>
 								<th>Kid No</th>
 								<th>IMEI</th>
+								<th>Relationship</th>
 								<th>Nickname</th>
 								<th>QRCode</th>
 							</tr>
@@ -171,6 +178,7 @@
 							</tbody>
 						</table>
 					</div>
+
 				</div>
 			</div>
 		</div>

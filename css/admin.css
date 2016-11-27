@@ -4,11 +4,8 @@
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.navbar ul {
-  margin-left: 3em;
-}
-.navbar ul li {
-  padding: 15px 10px;
+.navbar .navbar-brand {
+  margin-left: 2em;
 }
 .sidebar {
   padding: 0;
@@ -34,6 +31,20 @@
 }
 #tabs h2 {
   text-align: center;
+}
+#tabs .notify {
+  text-align: center;
+}
+#tabs .notify > p {
+  margin: 10px auto;
+}
+#tabs .notify .success {
+  display: none;
+  color: #5cb85c;
+}
+#tabs .notify .error {
+  display: none;
+  color: #d9534f;
 }
 #user-add {
   display: none;

@@ -7,6 +7,7 @@ $(function () {
 		tabUserDis = $('#user-dis'),
 		tabWatchDis = $('#watch-dis');
 	var lis = $('.sidebar li');
+	var notify = $(tabs).find('.notify');
 	var searchResult = $('#search-result'),
 		searchBody = $(searchResult).find('table>tbody');
 	//  buttons
@@ -35,7 +36,8 @@ $(function () {
 	}
 
 	function tabShow(id) {
-		$(tabs).children('div').hide();
+		$(tabs).children('div:not(.notify)').hide();
+		$(notify).find('p').hide();
 		$(id).show();
 	}
 
@@ -60,14 +62,21 @@ $(function () {
 		});
 	}
 
+	function notifyShow(className, msg) {
+		$(notify).find('p').hide();
+		$(notify).find('.' + className).html(msg);
+		$(notify).find('.' + className).show();
+	}
+
 	//  RESTful
 
 	function getStatistics() {
 		var url = 'http://test.com/kidee_admin/get.php';
 		dataPost(url, '', function (data) {
-			console.log(data);
+			$('.navbar li[data-num="watch"]').find('span').html(data.k_number);
+			$('.navbar li[data-num="user"]').find('span').html(data.p_number);
 		});
-	}
+	};
 
 	function search() {
 		var url = 'http://test.com/kidee_admin/search_user.php';
@@ -77,18 +86,12 @@ $(function () {
 		var postData = {};
 		postData[opt] = optVal;
 
-		//function detailRender(obj) {
-		//
-		//}
-
 		dataPost(url, postData, function (data) {
 			if (data) {
 				$(searchBody).empty();
 				var rowNum = data.kids.length;
 				var i = 0;
-				//var dataRow;
 				while (i < rowNum) {
-					console.log(data.p_username);
 					var dataRow = $('<tr>' +
 						'<td>' + data.p_username + '</td>' +
 						'<td>' + data.p_number + '</td>' +
@@ -96,6 +99,7 @@ $(function () {
 						'<td>' + data.kids[i].kid + '</td>' +
 						'<td>' + data.kids[i].k_number + '</td>' +
 						'<td>' + data.kids[i].imei + '</td>' +
+						'<td>' + data.kids[i].relationship + '</td>' +
 						'<td>' + data.kids[i].k_nickname + '</td>' +
 						'<td>' + data.kids[i].qrcode + '</td>' +
 						'</tr>');
@@ -103,9 +107,7 @@ $(function () {
 					i++;
 				}
 			}
-
 			$(searchResult).show();
-
 		});
 	}
 
@@ -116,9 +118,9 @@ $(function () {
 
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				console.log('user add success');
+				notifyShow('success', 'User add successfully.');
 			} else {
-				console.log('add fail');
+				notifyShow('error', 'User add failed, try again.');
 			}
 		});
 
@@ -131,9 +133,9 @@ $(function () {
 
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				console.log('Password change success');
+				notifyShow('success', 'User password changed.');
 			} else {
-				console.log('change fail');
+				notifyShow('error', 'Password change failed, try again.');
 			}
 		});
 
@@ -143,15 +145,13 @@ $(function () {
 		var url = 'http://test.com/kidee_admin/disable_user.php';
 		var postData = {};
 		postData = getObj(tabUserDis);
-
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				console.log('Disable user success');
+				notifyShow('success', 'User disabled successfully.');
 			} else {
-				console.log('Disable user fail');
+				notifyShow('error', 'User disable failed, try again.');
 			}
 		});
-
 	}
 
 	function watchDis() {
@@ -161,20 +161,19 @@ $(function () {
 
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				console.log('Disable watch success');
+				notifyShow('success', 'Watch disabled successfully.');
 			} else {
-				console.log('Disable watch fail');
+				notifyShow('error', 'Watch disabled failed, try again.');
 			}
 		});
 
 	}
 
-	//  todo: Page render function
-
 	//  sidebar click binder
 
 	(function renderStatistics() {
-		//  todo: 统计数据
+		getStatistics();
+		setInterval(getStatistics, 30 * 1000);
 	})();
 
 	function postBind(funcName, func) {
@@ -206,11 +205,25 @@ $(function () {
 		event.preventDefault();
 	});
 
-	//  todo: tabs click binder  --version: 1
 	//  btn group
+
 	$(btnSearch).bind('click', function () {
 		search();
 	});
 
+	$(btnUserAdd).bind('click', function () {
+		userAdd();
+	});
 
+	$(btnPassCha).bind('click', function () {
+		passCha();
+	});
+
+	$(btnUserDis).bind('click', function() {
+		userDis();
+	});
+
+	$(btnWatchDis).bind('click', function() {
+		watchDis();
+	});
 });
