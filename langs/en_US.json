@@ -1,0 +1,60 @@
+{
+  "nav-brand": "Kidee Manager",
+  "nav-right-0": "Watch Number",
+  "nav-right-1": "User Number",
+  "tab-name": {
+    "tab-0": "Watch Search",
+    "tab-1": "User Add",
+    "tab-2": "Password Change",
+    "tab-3": "User Disable",
+    "tab-4": "Watch Disable"
+  },
+  "tab-search": {
+    "title": "Watch Search",
+    "label": "Option",
+    "section": {
+      "op-0": "Username",
+      "op-1": "Watch IMEI",
+      "op-2": "Phone number"
+    }
+  },
+  "tab-useradd": {
+    "title": "User Add",
+    "label-0": "Username",
+    "label-1": "Password",
+    "btn": "Submit"
+  },
+  "tab-passcha": {
+    "title": "Password Change",
+    "label-0": "Username",
+    "label-1": "Origin password",
+    "label-2": "New password",
+    "btn": "Change"
+  },
+  "tab-userdis": {
+    "title": "User Disable",
+    "label": "Parent ID",
+    "btn": "Disable"
+  },
+  "tab-watchdis": {
+    "title": "Watch disable",
+    "label": "Watch ID",
+    "btn": "Disable"
+  },
+  "notify" : {
+    "success": "success",
+    "error": "error"
+  },
+  "search-results": {
+    "title": "Search Results",
+    "th-0": "Parent username",
+    "th-1": "Parent No",
+    "th-2": "Pid",
+    "th-3": "Kid",
+    "th-4": "Kid No",
+    "th-5": "IMEI",
+    "th-6": "Relationship",
+    "th-7": "Nickname",
+    "th-8": "QRCode"
+  }
+}

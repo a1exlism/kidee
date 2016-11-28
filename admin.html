@@ -13,13 +13,24 @@
 	<nav class="navbar navbar-default" role="navigation">
 		<!-- Brand-left -->
 		<div class="navbar-header">
-			<span class="navbar-brand">Kidee Manager</span>
+			<span data-locale="navbar-brand" class="navbar-brand">Kidee Manager</span>
 		</div>
 		<!-- right -->
 		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language(<span data-lang="now">English</span>)<span
+							class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a data-lang="chinese" href="#">[简体]Chinese</a></li>
+						<li><a data-lang="english" href="#">[English]English</a></li>
+						<li><a data-lang="spanish" href="#">[Español]Spanish</a></li>
+					</ul>
+				</li>
+			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li data-num="watch"><a href="javascript:0;">Watches Number: <span>NULL</span></a></li>
-				<li data-num="user"><a href="javascript:0;">User Number: <span>NULL</span></a></li>
+				<li><a href="#"><span data-locale="nav-right-0">Watch Number: </span><span data-num="watch">NULL</span></a></li>
+				<li><a href="#"><span data-locale="nav-right-1">User Number: </span><span data-num="user">NULL</span></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -33,19 +44,19 @@
 				<!-- nav tabs -->
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation" class="active">
-						<a href="#search" class="list-group-item" aria-controls="index">Watch Search</a>
+						<a href="#search" class="list-group-item" aria-controls="index" data-locale="tab-1">Watch Search</a>
 					</li>
 					<li role="presentation">
-						<a href="#user-add" class="list-group-item" aria-controls="user-add">User Add</a>
+						<a href="#user-add" class="list-group-item" aria-controls="user-add" data-locale="tab-2">User Add</a>
 					</li>
 					<li role="presentation">
-						<a href="#pass-cha" class="list-group-item">Password Change</a>
+						<a href="#pass-cha" class="list-group-item" data-locale="tab-3">Password Change</a>
 					</li>
 					<li role="presentation">
-						<a href="#user-dis" class="list-group-item">User Disable</a>
+						<a href="#user-dis" class="list-group-item" data-locale="tab-4">User Disable</a>
 					</li>
 					<li role="presentation">
-						<a href="#watch-dis" class="list-group-item">Watch Disable</a>
+						<a href="#watch-dis" class="list-group-item" data-locale="tab-5">Watch Disable</a>
 					</li>
 				</ul>
 			</div>
@@ -54,14 +65,16 @@
 				<div class="row">
 					<!-- Controller tabs -->
 					<div class="col-sm-offset-2 col-sm-6" id="tabs">
+
+
 						<div id="search">
-							<h2>Watch search</h2>
+							<h2 data-locale="title">Watch Search</h2>
 							<div class="form-group">
-								<label>Option: </label>
+								<label data-locale="label">Option: </label>
 								<select class="form-control">
-									<option data-opt="username" selected="selected">Username</option>
-									<option data-opt="imei">Watch IMEI</option>
-									<option data-opt="phone_number">Phone number</option>
+									<option data-opt="username" selected="selected" data-locale="op-1">Username</option>
+									<option data-opt="imei" data-locale="op-2">Watch IMEI</option>
+									<option data-opt="phone_number" data-locale="op-3">Phone number</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -76,87 +89,87 @@
 						</div>
 
 						<div id="user-add">
-							<h2>Add User</h2>
+							<h2 data-locale="title">User Add</h2>
 							<form>
 								<div class="form-group">
-									<label>Username: </label>
+									<label data-locale="label-1">Username: </label>
 									<input type="text" class="form-control" data-post="username">
 								</div>
 								<div class="form-group">
-									<label>Password: </label>
+									<label data-locale="label-2">Password: </label>
 									<input type="password" class="form-control" data-post="pwd">
 								</div>
-								<button type="button" id="btn-useradd" class="btn btn-success center-block">Submit</button>
+								<button type="button" id="btn-useradd" class="btn btn-success center-block" data-locale="btn">Submit</button>
 							</form>
 
 						</div>
 
 						<div id="pass-cha">
-							<h2>Change user password</h2>
+							<h2 data-locale="title">Password Change</h2>
 							<form>
 								<div class="form-group">
-									<label>Username: </label>
+									<label data-locale="label-1">Username: </label>
 									<input type="text" class="form-control" data-post="username">
 								</div>
 								<div class="form-group">
-									<label>Origin password: </label>
+									<label data-locale="label-2">Origin password: </label>
 									<input type="password" class="form-control" data-post="old_pwd">
 								</div>
 								<div class="form-group">
-									<label>New password: </label>
+									<label data-locale="label-3">New password: </label>
 									<input type="password" class="form-control" data-post="new_pwd">
 								</div>
-								<button type="button" id="btn-passcha" class="btn btn-warning center-block">Change</button>
+								<button type="button" id="btn-passcha" class="btn btn-warning center-block" data-locale="btn">Change</button>
 							</form>
 						</div>
 
 						<div id="user-dis">
-							<h2>Disable User</h2>
+							<h2 data-locale="title">User Disable</h2>
 							<form>
 								<div class="form-group">
-									<label>Parent ID: </label>
+									<label data-locale="label">Parent ID: </label>
 									<input type="text" class="form-control" data-post="pid">
 								</div>
-								<button type="button" id="btn-userdis" class="btn btn-danger center-block">Disable</button>
+								<button type="button" id="btn-userdis" class="btn btn-danger center-block" data-locale="btn">Disable</button>
 							</form>
 						</div>
 
 						<div id="watch-dis">
-							<h2>Disable watch</h2>
+							<h2 data-locale="title">Watch Disable</h2>
 							<form>
 								<div class="form-group">
-									<label>Watch ID: </label>
+									<label data-locale="label">Watch ID: </label>
 									<input type="text" class="form-control" data-post="kid">
 								</div>
-								<button type="button" id="btn-watchdis" class="btn btn-danger center-block">Disable</button>
+								<button type="button" id="btn-watchdis" class="btn btn-danger center-block" data-locale="btn">Disable</button>
 							</form>
 						</div>
 						<div class="notify">
-							<p class="success">success</p>
-							<p class="error">error</p>
+							<p class="success" data-locale="success">success</p>
+							<p class="error" data-locale="error">error</p>
 						</div>
 					</div>
 				</div>
 				<div class="row" id="search-result">
 					<div class="col-md-offset-1 col-md-10">
-						<h3>Search Results</h3>
+						<h3 data-locale="title">Search Results</h3>
 						<table class="table table-hover">
 							<thead>
 							<tr>
-								<th>Parent username</th>
-								<th>Parent No</th>
-								<th>Pid</th>
-								<th>Kid</th>
-								<th>Kid No</th>
-								<th>IMEI</th>
-								<th>Relationship</th>
-								<th>Nickname</th>
-								<th>QRCode</th>
+								<th data-locale="th-1">Parent username</th>
+								<th data-locale="th-2">Parent No</th>
+								<th data-locale="th-3">Pid</th>
+								<th data-locale="th-4">Kid</th>
+								<th data-locale="th-5">Kid No</th>
+								<th data-locale="th-6">IMEI</th>
+								<th data-locale="th-7">Relationship</th>
+								<th data-locale="th-8">Nickname</th>
+								<th data-locale="th-9">QRCode</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr>
-								<td>hex@qq.com</td>
+								<td>hex@gmail.com</td>
 								<td>18811112222</td>
 								<td>1234567</td>
 								<td>12312312</td>
@@ -166,7 +179,7 @@
 								<td>32431424</td>
 							</tr>
 							<tr>
-								<td>hex@qq.com</td>
+								<td>hex@gmail.com</td>
 								<td>18811112222</td>
 								<td>1234567</td>
 								<td>456456456</td>
@@ -186,6 +199,7 @@
 </div>
 
 <script src="js/3rd/jquery-3.1.1.min.js"></script>
+<script src="js/3rd/bootstrap/bootstrap.min.js"></script>
 <script src="js/admin.js"></script>
 </body>
 </html>

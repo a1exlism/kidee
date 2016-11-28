@@ -73,14 +73,13 @@ $(function () {
 	function getStatistics() {
 		var url = 'http://test.com/kidee_admin/get.php';
 		dataPost(url, '', function (data) {
-			$('.navbar li[data-num="watch"]').find('span').html(data.k_number);
-			$('.navbar li[data-num="user"]').find('span').html(data.p_number);
+			$('.navbar span[data-num="watch"]').html(data.k_number);
+			$('.navbar span[data-num="user"]').html(data.p_number);
 		});
-	};
+	}
 
 	function search() {
 		var url = 'http://test.com/kidee_admin/search_user.php';
-
 		var opt = $(tabSearch).find('select option:selected').attr('data-opt');
 		var optVal = $(tabSearch).find('input').val();
 		var postData = {};
@@ -219,11 +218,106 @@ $(function () {
 		passCha();
 	});
 
-	$(btnUserDis).bind('click', function() {
+	$(btnUserDis).bind('click', function () {
 		userDis();
 	});
 
-	$(btnWatchDis).bind('click', function() {
+	$(btnWatchDis).bind('click', function () {
 		watchDis();
 	});
+
+	//  header btn toggle
+	function langCha(lang) {
+		var dropdown = $('.dropdown-menu');
+		var headLan = $('.dropdown-toggle span[data-lang="now"]');
+		switch (lang) {
+			case 'chinese':
+				$(headLan).html('中文');
+				break;
+			case 'english':
+				$(headLan).html('English');
+				break;
+			case 'spanish':
+				$(headLan).html('Español');
+				break;
+			default:  //  english
+				$(headLan).html('English');
+		}
+	}
+
+
+	//  todo: i18n
+	function langSet(lang) {
+		var langs = {
+			chinese: 'zh_CN.json',
+			english: 'en_US.json',
+			spanish: 'es_ES.json'
+		};
+
+		var url = 'http://test.com/kidee/langs/' + langs[lang];
+		$.get(url, function (data) {
+			//  todo-0:  i18n Render
+
+			console.log(data);
+
+			//  nav
+			var nav = $('nav');
+			$(nav).find('.navbar-header span[data-locale="navbar-brand"]').text(data['nav-brand']);
+			$(nav).find('.navbar-right span[data-locale="nav-right-0"]').text(data['nav-right-0'] + ': ');
+			$(nav).find('.navbar-right span[data-locale="nav-right-1"]').text(data['nav-right-1'] + ': ');
+			//  tab
+			$('.nav li > a[data-locale^="tab-"]').each(function (index, ele) {
+				console.log(index);
+				console.log(data['tab-name']['tab-' + index]);
+				$(ele).text(data['tab-name']['tab-' + index]);
+			});
+			//  tab-search
+			var dataSearch = data['tab-search'];
+			$(tabSearch).find('h2').html(dataSearch['title']);
+			$(tabSearch).find('label').text(dataSearch['label'] + ': ');
+			$(tabSearch).find('option').each(function (index, ele) {
+				$(ele).text(dataSearch['section']['op-' + index]);
+			});
+			//  tab-userAdd
+			var dataUserAdd = data['tab-useradd'];
+			$(tabUserAdd).find('h2').text(dataUserAdd['title']);
+			$(tabUserAdd).find('label').each(function (index, ele) {
+				$(ele).text(dataUserAdd['label-' + index]);
+			});
+			$(tabUserAdd).find('button').text(dataUserAdd['btn']);
+			//  tab-passCha
+			var dataPassCha = data['tab-passcha'];
+			$(tabPassCha).find('h2').text(dataPassCha['title']);
+			$(tabPassCha).find('label').each(function (index, ele) {
+				$(ele).text(dataPassCha['label-' + index] + ':');
+			});
+			$(tabPassCha).find('button').text(dataPassCha['btn']);
+			//  tab-userDis
+			var dataUserDis = data['tab-userdis'];
+			$(tabUserDis).find('h2').text(dataUserDis['title']);
+			$(tabUserDis).find('label').text(dataUserDis['label'] + ': ');
+			$(tabUserDis).find('button').text(dataUserDis['btn']);
+			//  tab-watchDis
+			var dataWatchDis = data['tab-watchdis'];
+			$(tabWatchDis).find('h2').text(dataWatchDis['title']);
+			$(tabWatchDis).find('label').text(dataWatchDis['label'] + ': ');
+			$(tabWatchDis).find('button').text(dataWatchDis['btn']);
+
+		});
+	}
+
+
+	(function lanToggle() {
+		$('.dropdown-menu').each(function (index, element) {
+			$(element).find('a').bind('click', function () {
+				var lang = $(this).attr('data-lang');
+				langCha(lang);
+				langSet(lang);
+			});
+		});
+	})();
+
+
+	//  todo: 更改一下fonts源为本地
+
 });
