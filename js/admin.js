@@ -17,6 +17,7 @@ $(function () {
 		btnUserDis = $('#btn-userdis'),
 		btnWatchDis = $('#btn-watchdis');
 
+	var langNow = 'english';
 	//  public
 	(function activeToggle() {
 		var li = $('.sidebar .nav li');
@@ -110,16 +111,63 @@ $(function () {
 		});
 	}
 
+	var notifies = {
+		'english': {
+			'success': {
+				'userAdd': 'User add successfully.',
+				'passCha': 'User password changed.',
+				'userDis': 'User disabled successfully.',
+				'watchDis': 'Watch disabled successfully.'
+			},
+			'error': {
+				'userAdd': 'User add failed, try again.',
+				'passCha': 'Password change failed, try again.',
+				'userDis': 'User disable failed, try again.',
+				'watchDis': 'Watch disabled failed, try again.'
+			}
+		},
+		'chinese': {
+			'success': {
+				'userAdd': '用户添加成功',
+				'passCha': '用户密码更改成功',
+				'userDis': '用户禁用成功',
+				'watchDis': '手表禁用成功'
+			},
+			'error': {
+				'userAdd': '用户添加失败, 请重试',
+				'passCha': '用户密码更改失败, 请重试',
+				'userDis': '用户禁用失败, 请重试',
+				'watchDis': '手表禁用失败, 请重试'
+			}
+		},
+		'spanish': {
+			'success': {
+				'userAdd': 'El usuario agrega correctamente.',
+				'passCha': 'Se ha cambiado la contraseña de usuario.',
+				'userDis': 'El usuario ha sido desactivado correctamente.',
+				'watchDis': 'El reloj se ha inhabilitado correctamente.'
+			},
+			'error': {
+				'userAdd': 'Se ha producido un error al agregar el usuario, Vuelva a intentarlo.',
+				'passCha': 'Se produjo un error en el cambio de contraseña, Vuelva a intentarlo.',
+				'userDis': 'Se ha producido un error en la inhabilitación del usuario, vuelve a intentarlo.',
+				'watchDis': 'Error de reloj desactivado, Vuelva a intentarlo.'
+			}
+		}
+	};
+
+
 	function userAdd() {
 		var url = 'http://test.com/kidee_admin/add_user.php';
 		var postData = {};
 		postData = getObj(tabUserAdd);
-
 		dataPost(url, postData, function (data) {
+
+			console.log(langNow);
 			if (data && data.result == 1) {
-				notifyShow('success', 'User add successfully.');
+				notifyShow('success', notifies[langNow]['success']['userAdd']);
 			} else {
-				notifyShow('error', 'User add failed, try again.');
+				notifyShow('error', notifies[langNow]['error']['userAdd']);
 			}
 		});
 
@@ -132,9 +180,9 @@ $(function () {
 
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				notifyShow('success', 'User password changed.');
+				notifyShow('success', notifies[langNow]['success']['passCha']);
 			} else {
-				notifyShow('error', 'Password change failed, try again.');
+				notifyShow('error', notifies[langNow]['error']['passCha']);
 			}
 		});
 
@@ -146,9 +194,9 @@ $(function () {
 		postData = getObj(tabUserDis);
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				notifyShow('success', 'User disabled successfully.');
+				notifyShow('success', notifies[langNow]['success']['userDis']);
 			} else {
-				notifyShow('error', 'User disable failed, try again.');
+				notifyShow('error', notifies[langNow]['error']['userDis']);
 			}
 		});
 	}
@@ -160,9 +208,9 @@ $(function () {
 
 		dataPost(url, postData, function (data) {
 			if (data && data.result == 1) {
-				notifyShow('success', 'Watch disabled successfully.');
+				notifyShow('success', notifies[langNow]['success']['watchDis']);
 			} else {
-				notifyShow('error', 'Watch disabled failed, try again.');
+				notifyShow('error', notifies[langNow]['error']['watchDis']);
 			}
 		});
 
@@ -245,8 +293,6 @@ $(function () {
 		}
 	}
 
-
-	//  todo: i18n
 	function langSet(lang) {
 		var langs = {
 			chinese: 'zh_CN.json',
@@ -256,9 +302,6 @@ $(function () {
 
 		var url = 'http://test.com/kidee/langs/' + langs[lang];
 		$.get(url, function (data) {
-			//  todo-0:  i18n Render
-
-			console.log(data);
 
 			//  nav
 			var nav = $('nav');
@@ -302,22 +345,23 @@ $(function () {
 			$(tabWatchDis).find('h2').text(dataWatchDis['title']);
 			$(tabWatchDis).find('label').text(dataWatchDis['label'] + ': ');
 			$(tabWatchDis).find('button').text(dataWatchDis['btn']);
-
+			//  search result
+			var dataSearchResults = data['search-results'];
+			$(searchResult).find('.table thead > tr > th').each(function (index, ele) {
+				$(ele).text(dataSearchResults['th-' + index]);
+			});
 		});
 	}
-
 
 	(function lanToggle() {
 		$('.dropdown-menu').each(function (index, element) {
 			$(element).find('a').bind('click', function () {
 				var lang = $(this).attr('data-lang');
+				langNow = lang;
 				langCha(lang);
 				langSet(lang);
 			});
 		});
 	})();
-
-
-	//  todo: 更改一下fonts源为本地
 
 });

@@ -1,0 +1,60 @@
+{
+  "nav-brand": "Kidee 管理平台",
+  "nav-right-0": "APP 数",
+  "nav-right-1": "用户数",
+  "tab-name": {
+    "tab-0": "手表搜索",
+    "tab-1": "用户添加",
+    "tab-2": "修改密码",
+    "tab-3": "用户禁用",
+    "tab-4": "手表禁用"
+  },
+  "tab-search": {
+    "title": "手表搜索",
+    "label": "选项",
+    "section": {
+      "op-0": "用户名",
+      "op-1": "手表 IMEI",
+      "op-2": "电话号码"
+    }
+  },
+  "tab-useradd": {
+    "title": "用户添加",
+    "label-0": "用户名",
+    "label-1": "密码",
+    "btn": "提交"
+  },
+  "tab-passcha": {
+    "title": "修改密码",
+    "label-0": "用户名",
+    "label-1": "原密码",
+    "label-2": "新密码",
+    "btn": "修改"
+  },
+  "tab-userdis": {
+    "title": "用户禁用",
+    "label": "家长ID",
+    "btn": "禁用"
+  },
+  "tab-watchdis": {
+    "title": "手表禁用",
+    "label": "手表ID",
+    "btn": "禁用"
+  },
+  "notify" : {
+    "success": "成功",
+    "error": "失败"
+  },
+  "search-results": {
+    "title": "搜索结果",
+    "th-0": "家长用户名",
+    "th-1": "家长号码",
+    "th-2": "Pid",
+    "th-3": "Kid",
+    "th-4": "儿童号码",
+    "th-5": "IMEI",
+    "th-6": "关系",
+    "th-7": "昵称",
+    "th-8": "二维码ID"
+  }
+}

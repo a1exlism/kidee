@@ -1,0 +1,60 @@
+{
+  "nav-brand": "Kidee Manejar",
+  "nav-right-0": "Reloj Número",
+  "nav-right-1": "Usuario Número",
+  "tab-name": {
+    "tab-0": "Reloj Buscar",
+    "tab-1": "Usuario Añadir",
+    "tab-2": "Contraseña Cambio",
+    "tab-3": "Usuario Inhabilitar",
+    "tab-4": "Reloj Inhabilitar"
+  },
+  "tab-search": {
+    "title": "Reloj Buscar",
+    "label": "Opción",
+    "section": {
+      "op-0": "Usted",
+      "op-1": "Reloj IMEI",
+      "op-2": "Phone Número"
+    }
+  },
+  "tab-useradd": {
+    "title": "Usuario Añadir",
+    "label-0": "Usted",
+    "label-1": "Contraseña",
+    "btn": "Enviar"
+  },
+  "tab-passcha": {
+    "title": "Contraseña Cambio",
+    "label-0": "Usted",
+    "label-1": "Origen contraseña",
+    "label-2": "Nuevo contraseña",
+    "btn": "Cambio"
+  },
+  "tab-userdis": {
+    "title": "Usuario Inhabilitar",
+    "label": "Padre ID",
+    "btn": "Inhabilitar"
+  },
+  "tab-watchdis": {
+    "title": "Reloj Inhabilitar",
+    "label": "Reloj ID",
+    "btn": "Inhabilitar"
+  },
+  "notify" : {
+    "success": "Éxito",
+    "error": "Error"
+  },
+  "search-results": {
+    "title": "Buscar Results",
+    "th-0": "Padre Usted",
+    "th-1": "Padre Número",
+    "th-2": "Pid",
+    "th-3": "Niño",
+    "th-4": "Niño Número",
+    "th-5": "IMEI",
+    "th-6": "Relación",
+    "th-7": "Apodo",
+    "th-8": "Código QR"
+  }
+}
